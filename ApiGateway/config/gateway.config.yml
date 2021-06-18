@@ -1,0 +1,25 @@
+http:
+  port: 8080
+https:
+  port: 8443
+apiEndpoints:
+  payments:
+    host: localhost
+    paths: '/payment/*'
+serviceEndpoints:
+  payments:
+    url: 'http://payment.service:5040'
+policies:
+  - cors
+  - key-auth
+  - proxy
+  - rate-limit
+pipelines:
+  payments:
+    apiEndpoints:
+      - payments
+    policies:
+      - proxy:
+          - action:
+              serviceEndpoint: payments 
+              changeOrigin: true

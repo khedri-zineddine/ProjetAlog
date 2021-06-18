@@ -1,0 +1,23 @@
+{
+  "name": "authentification",
+  "version": "1.0.0",
+  "description": "Service auth",
+  "main": "app/index.js",
+  "scripts": {
+    "start": "node app/index.js",
+    "start:dev": "nodemon --exec node app/index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "node": "^16.3.0",
+    "pg": "^8.6.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "author": "",
+  "license": "ISC"
+}
