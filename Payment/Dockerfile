@@ -2,7 +2,7 @@ FROM node:14-alpine as base
 
 WORKDIR /src
 COPY package*.json /src/
-EXPOSE 8001
+EXPOSE 8002
 RUN npm ci
 COPY . /src
 
@@ -15,4 +15,4 @@ CMD ["node", "build/"]
 
 FROM base as development
 ENV NODE_ENV=development
-CMD ["npm", "run", "start:dev"]FROM node:14-alpine as base
+CMD ["npm", "run", "start:dev"]
