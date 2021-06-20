@@ -2,9 +2,9 @@ import express from 'express';
 import { json } from "express";
 import cors from 'cors';
 import morgan from 'morgan';
-import {createConnection} from './services'
+import { createConnection } from './services'
 const app = express()
-
+import router from "./routes"
 app.use(json())
 app.use(cors())
 app.use(morgan("dev"))
