@@ -1,7 +1,6 @@
 import { createCustomer, createPaymentMethod, attachPaymentMethod, payUserAmount, fetchCustomerPaymentMethods } from '../services';
-import { StripeCustomers, PaymentMethods, Rental } from '../entity'
+import { StripeCustomers, PaymentMethods } from '../entity'
 import { FACTURATION_URL } from '../config'
-import axios from 'axios'
 export const addPaymentMethod = async (req, res) => {
     /** body request validation here  */
     const user = req.user
@@ -118,11 +117,6 @@ export const payForCustomer = async (req, res) => {
         subscription.subscriptionState = "paid"
         subscription.save()
         const payedAmount = payed.amount / 100
-        axios.post(FACTURATION_URL + '/bill/add', {
-            idRental: req.body.idRental,
-            typeBill: req.body.type,
-            amountToBill: payedAmount
-        })
         return res.status(200).send(
             {
                 ok: true,
