@@ -2,8 +2,8 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.createTable('private_companies', {
-      idPrivateCompany : {
+    return queryInterface.createTable('client_has_contacts', {
+      idContactClient : {
         type : Sequelize.DataTypes.INTEGER,
         primaryKey : true,
         autoIncrement : true,
@@ -19,16 +19,20 @@ module.exports = {
         },
         allowNull: false
       },
-      groupe: {type:Sequelize.DataTypes.STRING},
-      logoCompany: {type:Sequelize.DataTypes.STRING},
-      address: {type:Sequelize.DataTypes.STRING},
-      siteInternet: {type:Sequelize.DataTypes.STRING},
-      phoneNumber: {type:Sequelize.DataTypes.STRING},
-      nbSalarie: {type:Sequelize.DataTypes.STRING}
+      idContact: {
+        type: Sequelize.DataTypes.INTEGER,
+        references: {
+          model: {
+            tableName: 'contacts'
+          },
+          key: 'idContact'
+        },
+        allowNull: false
+      }
     })
   },
 
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('private_companies');
+    return queryInterface.dropTable('client_has_contacts');
   }
 };

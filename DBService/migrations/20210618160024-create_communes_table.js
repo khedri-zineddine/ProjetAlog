@@ -2,20 +2,31 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    /**
-     * Add altering commands here.
-     *
-     * Example:
-     * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
-     */
+    return queryInterface.createTable('communes', {
+      idCommune : {
+        type : Sequelize.DataTypes.INTEGER,
+        primaryKey : true,
+        autoIncrement : true,
+        unique : true
+      },
+      idPublicCompany: {
+        type: Sequelize.DataTypes.INTEGER,
+        references: {
+          model: {
+            tableName: 'public_companies'
+          },
+          key: 'idPublicCompany'
+        },
+        allowNull: false
+      },
+      nomCommune: {type:Sequelize.DataTypes.STRING},
+      codeCommune: {type:Sequelize.DataTypes.STRING},
+      nbPeople: {type:Sequelize.DataTypes.STRING},
+      logo: {type:Sequelize.DataTypes.STRING}
+    })
   },
 
   down: async (queryInterface, Sequelize) => {
-    /**
-     * Add reverting commands here.
-     *
-     * Example:
-     * await queryInterface.dropTable('users');
-     */
+    return queryInterface.dropTable('communes');
   }
 };
