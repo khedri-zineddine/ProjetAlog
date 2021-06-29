@@ -9,6 +9,6 @@ app.use(json())
 app.use(cors())
 app.use(morgan("dev"))
 createConnection()
-app.listen(8002, () => {
+app.listen(process.env.PORT, () => {
     console.log("server started.")
 })

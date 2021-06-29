@@ -1,26 +1,47 @@
 {
   "development": {
-    "username": "postgres",
-    "password": "",
-    "database": "projectalog",
-    "host": "127.0.0.1",
+    "username": "ydlmbntubfurtt",
+    "password": "fb35a4ee7cd064f0b4bcc33cb86f85fbcaa1f149305027f96a1386053338fc31",
+    "database": "d4le56sa1fqut7",
+    "host": "ec2-54-247-158-179.eu-west-1.compute.amazonaws.com",
     "dialect": "postgres",
-    "port": "5432"
+    "port": "5432",
+    "ssl": true, 
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
   },
   "test": {
-    "username": "postgres",
-    "password": "",
-    "database": "projectalog",
-    "host": "127.0.0.1",
+    "username": "ydlmbntubfurtt",
+    "password": "fb35a4ee7cd064f0b4bcc33cb86f85fbcaa1f149305027f96a1386053338fc31",
+    "database": "d4le56sa1fqut7",
+    "host": "ec2-54-247-158-179.eu-west-1.compute.amazonaws.com",
     "dialect": "postgres",
-    "port": "5432"
+    "port": "5432",
+    "ssl": true, 
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
   },
   "production": {
-    "username": "postgres",
-    "password": "",
-    "database": "projectalog",
-    "host": "127.0.0.1",
+    "username": "ydlmbntubfurtt",
+    "password": "fb35a4ee7cd064f0b4bcc33cb86f85fbcaa1f149305027f96a1386053338fc31",
+    "database": "d4le56sa1fqut7",
+    "host": "ec2-54-247-158-179.eu-west-1.compute.amazonaws.com",
     "dialect": "postgres",
-    "port": "5432"
+    "port": "5432",
+    "ssl": true, 
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
   }
 }

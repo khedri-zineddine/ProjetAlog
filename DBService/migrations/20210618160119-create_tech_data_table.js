@@ -26,7 +26,9 @@ module.exports = {
       tonnageAnnule:{type:Sequelize.DataTypes.STRING},
       capaciteNominal:{type:Sequelize.DataTypes.STRING},
       dernierConstructeur:{type:Sequelize.DataTypes.STRING},
-      valorisationEnergitique:{type:Sequelize.DataTypes.STRING}
+      valorisationEnergitique:{type:Sequelize.DataTypes.STRING},
+      updatedAt: {type:Sequelize.DataTypes.DATE,defaultValue:Sequelize.NOW},
+      createdAt: {type:Sequelize.DataTypes.DATE,defaultValue:Sequelize.NOW}
     })
   },
 

@@ -20,6 +20,8 @@ module.exports = {
         allowNull: false
       },
       email: {type:Sequelize.DataTypes.STRING,unique:true},
+      updatedAt: {type:Sequelize.DataTypes.DATE,defaultValue:Sequelize.NOW},
+      createdAt: {type:Sequelize.DataTypes.DATE,defaultValue:Sequelize.NOW}
     })
   },
 

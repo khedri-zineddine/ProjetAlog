@@ -28,7 +28,9 @@ module.exports = {
           key: 'idContact'
         },
         allowNull: false
-      }
+      },
+      updatedAt: {type:Sequelize.DataTypes.DATE,defaultValue:Sequelize.NOW},
+      createdAt: {type:Sequelize.DataTypes.DATE,defaultValue:Sequelize.NOW}
     })
   },
 

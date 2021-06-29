@@ -17,6 +17,8 @@ module.exports = {
       phoneNumber: {type:Sequelize.DataTypes.STRING},
       mobile: {type:Sequelize.DataTypes.STRING},
       address: {type:Sequelize.DataTypes.STRING},
+      updatedAt: {type:Sequelize.DataTypes.DATE,defaultValue:Sequelize.NOW},
+      createdAt: {type:Sequelize.DataTypes.DATE,defaultValue:Sequelize.NOW}
     })
   },
 

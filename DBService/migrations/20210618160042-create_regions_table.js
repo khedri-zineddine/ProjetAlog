@@ -10,7 +10,9 @@ module.exports = {
         unique : true
       },
       nomRegion:{type:Sequelize.DataTypes.STRING},
-      codeRegion:{type:Sequelize.DataTypes.STRING}
+      codeRegion:{type:Sequelize.DataTypes.STRING},
+      updatedAt: {type:Sequelize.DataTypes.DATE,defaultValue:Sequelize.NOW},
+      createdAt: {type:Sequelize.DataTypes.DATE,defaultValue:Sequelize.NOW}
     })
   },
 

@@ -21,7 +21,9 @@ module.exports = {
       },
       typeCompany: {type:Sequelize.DataTypes.ENUM({values:['Epic','Syndicat','Commune']})},
       idRegion: {type:Sequelize.DataTypes.INTEGER},
-      idDepartement: {type:Sequelize.DataTypes.INTEGER}
+      idDepartement: {type:Sequelize.DataTypes.INTEGER},
+      updatedAt: {type:Sequelize.DataTypes.DATE,defaultValue:Sequelize.NOW},
+      createdAt: {type:Sequelize.DataTypes.DATE,defaultValue:Sequelize.NOW}
     })
   },
 

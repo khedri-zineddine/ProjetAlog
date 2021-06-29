@@ -14,6 +14,8 @@ module.exports = {
       userName: {type:Sequelize.DataTypes.STRING,unique:true},
       password: {type:Sequelize.DataTypes.STRING},
       typeUser: {type:Sequelize.DataTypes.ENUM({values : ['admin','supAdmin','manager','userPrem','userSimple']})},
+      updatedAt: {type:Sequelize.DataTypes.DATE,defaultValue:Sequelize.NOW},
+      createdAt: {type:Sequelize.DataTypes.DATE,defaultValue:Sequelize.NOW}
     })
   },
 

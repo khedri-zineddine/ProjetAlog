@@ -9,7 +9,9 @@ module.exports = {
         autoIncrement : true,
         unique : true
       },
-      typeClient: {type:Sequelize.DataTypes.ENUM({values:['publicCompany','privateCompany']})}
+      typeClient: {type:Sequelize.DataTypes.ENUM({values:['publicCompany','privateCompany']})},
+      updatedAt: {type:Sequelize.DataTypes.DATE,defaultValue:Sequelize.NOW},
+      createdAt: {type:Sequelize.DataTypes.DATE,defaultValue:Sequelize.NOW}
     })
   },
 

@@ -25,7 +25,9 @@ module.exports = {
       siteInternet: {type:Sequelize.DataTypes.STRING},
       phoneNumber: {type:Sequelize.DataTypes.STRING},
       nbPeople: {type:Sequelize.DataTypes.STRING},
-      logo: {type:Sequelize.DataTypes.STRING}
+      logo: {type:Sequelize.DataTypes.STRING},
+      updatedAt: {type:Sequelize.DataTypes.DATE,defaultValue:Sequelize.NOW},
+      createdAt: {type:Sequelize.DataTypes.DATE,defaultValue:Sequelize.NOW}
     })
   },
 

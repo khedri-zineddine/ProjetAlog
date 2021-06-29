@@ -8,7 +8,7 @@ apiEndpoints:
     paths: '/payment/*'
 serviceEndpoints:
   payments:
-    url: 'http://payment.service:5040'
+    url: 'http://payment.service:8000'
 policies:
   - cors
   - key-auth

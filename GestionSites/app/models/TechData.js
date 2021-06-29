@@ -4,5 +4,6 @@ export class TechData extends Model {}
 TechData.init({
   
 }, {
-  
+  sequelize,
+  tableName: 'sites'
 });

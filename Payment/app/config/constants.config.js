@@ -1,0 +1,2 @@
+export const STRIPE_KEY = "sk_test_sjndjsnsjndsjndjsndjsndjanqhqohuowhodefuhvgwrfuqejhfqvqihqvncvuqevh231908ueodu813uo28d13or89rh8f839"
+export const FACTURATION_URL = 'http://localhost:5056'
