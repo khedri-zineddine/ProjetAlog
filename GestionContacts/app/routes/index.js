@@ -1,7 +1,5 @@
-let { addContact, deleteContact, fetchContacts } = require("../controllers/contact.controller")
-
-const router = require("express").Router()
-router.post("/contacts/createContact", addContact)
-router.get("/contacts/getContacts", fetchContacts)
-router.delete("/contacts/deleteContact", deleteContact)
-module.exports = router
+import { Router } from "express"
+import { routerV1 } from './v1'
+const router = Router()
+router.use('/v1', routerV1)
+export { router }

@@ -10,13 +10,21 @@ export class SiteController {
         * @return message sucess
         * 
     ****************************************/
-    static addSite = (req, res) => {
-        const site = req.body.site
-        if (!site) {
-            return res.status(200).send({ success: true, message: "site object is missing" })
+    static addSite = async (req, res) => {
+        const site1 = {
+            category: req.body.category,
+            siteInternet: req.body.siteInternet,
+            address: req.body.address,
+            phoneSite: req.body.phoneSite,
+            photoSite: req.body.photoSite
         }
-        Site.create(site).then((savedSite) => res.status(201).send({ success: true, site: savedSite }))
-            .catch((error) => res.status(400).send({ success: false, message: error.message }))
+
+        try {
+            const site = await Site.create(site1)
+            res.status(200).send({ success: true, site })
+        } catch (err) {
+            res.status(500).send({ success: false, message: err.message })
+        }
     }
     /****************************************  
         * 
@@ -26,10 +34,14 @@ export class SiteController {
         * @return message sucess
         * 
     ****************************************/
-    static fetchSites = (req, res) => {
+    static fetchSites = async (req, res) => {
+        try {
+            const sites = await Site.findAll()
+            res.status(200).send({ success: true, sites, length: sites.length })
+        } catch (err) {
+            res.status(500).send({ success: false, message: err.message })
+        }
 
-        Site.findAll().then((sites) => res.status(200).send({ success: true, classrooms: classrooms }))
-            .catch((error) => { res.status(400).send({ success: false, message: error.message }); });
 
     }
 
@@ -42,18 +54,28 @@ export class SiteController {
         * @return message sucess
         * 
     ****************************************/
-    static deleteSite = (req, res) => {
-        Site.findByPk(req.body.siteId).then(site => {
-            if (site) {
-                return res.status(400).send({
-                    success: false,
-                    message: 'Site Not Found',
-                });
-            }
-            site.destroy()
-                .then(() => res.status(204).send({ success: true, message: "Site deleted successfully" }))
-                .catch((error) => res.status(400).send({ success: false, message: error.message }));
-        })
+    static deleteSite = async (req, res) => {
+        try {
+            const site = await Site.findByPk(req.body.siteId)
+            const isDeleted = await site.destroy()
+            res.status(200).send({ success: true, message: "Site deleted successfully" })
+
+        } catch (err) {
+            res.status(500).send({ success: false, message: err.message })
+        }
+
 
     }
+    static updateSite = async (req, res) => {
+        try {
+            const site = await Site.findByPk(req.body.siteId)
+            const isUpdated = await site.update(req.body)
+            res.status(200).send({ success: true, message: "Site updated successfully" })
+
+        } catch (err) {
+            res.status(500).send({ success: false, message: err.message })
+        }
+
+    }
+
 }

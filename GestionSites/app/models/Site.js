@@ -1,24 +1,25 @@
-import {  DataTypes, Model } from 'sequelize'
-export class Site extends Model {}
+import { DataTypes, Model } from 'sequelize'
+export class Site extends Model { }
 Site.init({
   idSite: {
     type: DataTypes.INTEGER,
-    primaryKey:true
+    primaryKey: true,
+    autoIncrement: true
   },
-  category:{
-      type:DataTypes.STRING
+  category: {
+    type: DataTypes.STRING
   },
-  siteInternet:{
-      type:DataTypes.STRING
+  siteInternet: {
+    type: DataTypes.STRING
   },
-  address:{
-      type:DataTypes.STRING
+  address: {
+    type: DataTypes.STRING
   },
-  phoneSite:{
-      type:DataTypes.STRING
+  phoneSite: {
+    type: DataTypes.STRING
   },
-  photoSite:{
-      type:DataTypes.STRING
+  photoSite: {
+    type: DataTypes.STRING
   }
 }, {
   sequelize,

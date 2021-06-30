@@ -1,114 +1,58 @@
 import { User } from "../models/User"
-
-/****************************************  
-    * 
-    * Create new User in dataBase
-    * @param req the request must contain username password role
-    *   @subParam \Models\User user
-    * @param res Response express
-    * @return message sucess
-    * 
-****************************************/
-export const addUser = (req, res) => {
-    const user = req.body.user
-    //check if object user is found
-    if (!user) {
-        return res.status(200).send({ success: true, message: "User object is missing" })
-    }
-    //create the user
-    User.create(user).then((savedUser) => res.status(201).send({ success: true, site: savedUser }))
-        .catch((error) => res.status(400).send({ success: false, message: error.message }))
-}
-/****************************************  
-    * 
-    * Fetch users from dataBase
-    * @param req Requeset express
-    * @param res Response express
-    * @return message sucess
-    * 
-****************************************/
-export const fetchUsers = (req, res) => {
-
-    //Get and return all users 
-    User.findAll().then((users) => res.status(200).send({ success: true, users: users }))
-        .catch((error) => { res.status(400).send({ success: false, message: error.message }); });
-
-}
+const bcrypt = require("bcrypt")
 
 
-
-/****************************************  
-    * 
-    * Fetch user from dataBase
-    * @param req the request must contain
-    *   @subParam Integer userId
-    * @param res Response express
-    * @return message sucess
-    * 
-****************************************/
-export const fetchUser = (req, res) => {
-
-    const userId = req.params.userid;
-    //Get user with the given Id
-    User.findOneByPk(userId).then(user => {
-
-        //Check for the found user
-        if (!user) {
-            return res.status(404).send({success: false, message: 'User Not Found'});
+export class UserController {
+    static addUser = async (req, res) => {
+        var salt = bcrypt.genSaltSync(10);
+        var hash = bcrypt.hashSync(req.body.password, salt);
+        try {
+            let user = {
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                userName: req.body.userName,
+                password: hash,
+                typeUser: 'userSimple'
+            }
+            let result = await User.create(user)
+            res.status(200).send({ success: true, message: "User created successfuly" })
+        } catch (err) {
+            return res.status(500).send({ success: false, message: err.message })
         }
-        res.status(200).send({success: true, user: user});
-    })
+    }
+    static getUsers = async (req, res) => {
+        try {
+            const users = await User.findAll()
+            res.status(200).send({ success: true, users })
+        } catch (err) {
+            return res.status(500).send({ success: false, message: err.message })
+        }
+    }
+    static getUser = async (req, res) => {
+        try {
+            const user = await User.findByPk(req.params.userId)
+            res.status(200).send({ success: true, user })
+        } catch (err) {
+            return res.status(500).send({ success: false, message: err.message })
+        }
+    }
+    static deleteUser = async (req, res) => {
+        try {
+            const user = await User.findByPk(req.body.userId)
+            const isDeleted = await user.destroy()
+            res.send({ success: true, message: "User deleted successfully" })
+        } catch (err) {
+            return res.status(500).send({ success: false, message: err.message })
+        }
+    }
+    static updateUser = async (req, res) => {
+        try {
+            const user = await User.findByPk(req.body.userId)
+            const isUpdated = await user.update(req.body)
+            res.status(200).send({ success: true, message: "User updated successfully" })
 
-}
-
-/****************************************  
-    * 
-    * Update user from dataBase
-    * @param req the request must contain user
-    *   @subParam Integer userId
-    * @param res Response express
-    * @return message sucess
-    * 
-****************************************/
-export const updateUser = (req, res) => {
-
-    const userId = req.params.userid;
-    const userN = req.params.user;
-
-    //Get user with the given Id
-    User.findOneByPk(userId).then(user => {
-        
-        //Check for user
-        if (!user) {
-            return res.status(404).send({success: false, message: 'User Not Found'});
-        } //update the user with the given userN object
-        user.update(userN)
-            .then(() => res.status(201).send({ success: true, message: "user updated successfully" }))
-            .catch((error) => res.status(400).send({ success: false, message: error.message }));
-    })
-
-}
-/****************************************  
-    * 
-    * Delete user from dataBase
-    * @param req the request must contain
-    *   @subParam Integer userId
-    * @param res Response express
-    * @return message sucess
-    * 
-****************************************/
-export const deleteUser = (req, res) => {
-
-    //Get user with the given Id
-    const userId = req.params.userid;
-    User.findByPk(userId).then(user => {
-        //Check for user
-        if (user) {
-            return res.status(404).send({success: false, message: 'User Not Found'});
-        } //Delete the user 
-        user.destroy()
-            .then(() => res.status(204).send({ success: true, message: "user deleted successfully" }))
-            .catch((error) => res.status(400).send({ success: false, message: error.message }));
-    })
-
+        } catch (err) {
+            return res.status(500).send({ success: false, message: err.message })
+        }
+    }
 }
