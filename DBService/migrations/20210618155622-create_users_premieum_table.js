@@ -20,7 +20,7 @@ module.exports = {
         allowNull: false
       },
       isPaid: {type:Sequelize.DataTypes.BOOLEAN,defaultValue:false},
-      lastPayment: {type:Sequelize.DataTypes.DATE},
+      lastPayment: {type:Sequelize.DataTypes.DATE,defaultValue:Sequelize.NOW},
       email: {type:Sequelize.DataTypes.STRING,unique:true},
       updatedAt: {type:Sequelize.DataTypes.DATE,defaultValue:Sequelize.NOW},
       createdAt: {type:Sequelize.DataTypes.DATE,defaultValue:Sequelize.NOW}

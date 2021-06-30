@@ -1,6 +1,6 @@
 import { User } from "../models/User"
 
-
+const bcrypt = require('bcrypt')
 
 
 export class AuthController {

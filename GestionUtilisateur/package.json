@@ -5,7 +5,7 @@
   "main": "app/index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production PORT=8000 node app/index.js",
-    "dev": "cross-env NODE_ENV=development PORT=8000 nodemon --exec babel-node app/index.js"
+    "dev": "cross-env NODE_ENV=development PORT=4000 nodemon --exec babel-node app/index.js"
   },
   "dependencies": {
     "@babel/cli": "^7.10.5",

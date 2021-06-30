@@ -1,4 +1,4 @@
-import { Site } from '../models'
+import { Site, TechData } from '../models'
 
 export class SiteController {
     /****************************************  
@@ -15,13 +15,16 @@ export class SiteController {
             category: req.body.category,
             siteInternet: req.body.siteInternet,
             address: req.body.address,
+            createYear: req.body.createYear,
             phoneSite: req.body.phoneSite,
             photoSite: req.body.photoSite
         }
-
+        const dataTech1 = req.body.dataTech
         try {
             const site = await Site.create(site1)
-            res.status(200).send({ success: true, site })
+            dataTech1.idSite = site.idSite
+            const dataTech = await TechData.create(dataTech1)
+            res.status(200).send({ success: true, message: "Site and tech data were created successfully" })
         } catch (err) {
             res.status(500).send({ success: false, message: err.message })
         }

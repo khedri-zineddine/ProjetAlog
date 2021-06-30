@@ -6,6 +6,10 @@ Site.init({
     primaryKey: true,
     autoIncrement: true
   },
+  createYear: {
+    type: DataTypes.STRING
+
+  },
   category: {
     type: DataTypes.STRING
   },

@@ -12,7 +12,7 @@ export class UserController {
                 lastName: req.body.lastName,
                 userName: req.body.userName,
                 password: hash,
-                typeUser: 'userSimple'
+                typeUser: 'userPrem'
             }
             let result = await User.create(user)
             res.status(200).send({ success: true, message: "User created successfuly" })
