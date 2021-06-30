@@ -27,5 +27,8 @@
     "sequelize-cli": "^6.2.0"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "directories": {
+    "test": "tests"
+  }
 }

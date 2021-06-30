@@ -1,5 +1,9 @@
 import { User } from "../models/User"
 
+
+
+
+export class AuthController {
 /****************************************  
     * 
     * Login to the application
@@ -9,7 +13,7 @@ import { User } from "../models/User"
     * @return message sucess && token 
     * 
 ****************************************/
-export const Login = (req, res) => {
+static Login = (req, res) => {
 
     //Extract the login credentials from the request body
     const { username, password } = req.body;
@@ -41,4 +45,4 @@ export const Login = (req, res) => {
             }
         }
     }
-}
+}}
